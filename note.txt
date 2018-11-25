@@ -1,0 +1,9 @@
+1	Create git
+
+	install vue-cli global
+	can check with vue list
+	=> vue init webpack client
+	   to install vue resouce file for client
+	=> npm install
+
+2	

@@ -1,4 +1,11 @@
 1	Create git
+	git clone url link
+
+
+	to push
+		git add --all
+		git commit -m 'first setup using vue-cli'
+		git push
 
 	install vue-cli global
 	can check with vue list
@@ -6,4 +13,93 @@
 	   to install vue resouce file for client
 	=> npm install
 
-2	
+	push to git
+
+
+
+2 create server folder(mkdir server)
+  this folder can create server project
+
+  npm init -f
+
+  npm install eslint
+
+
+  =>	create src>app.js
+  		change package.json start : "nodemon src/app.js"
+
+  		** if use eslint  node node_modules/eslint/bin/eslint.js --init 
+  			run this
+
+
+
+  =>	install express body-parser cors morgan
+
+  		Why Morgan
+  			I recently had to add logging to an Express app. I was going to go with console.log that was until I did some research.
+
+			So why not use console.log, console.error or console.warn:
+
+			You can’t switch off the logs. Once a log statement is encountered, it will always be printed.
+			You can’t assign levels to logging. For example you might want certain kinds of logs only in development and not in production.
+			These functions are synchronous when the destination is a terminal or a file, so they are not suitable for production, unless you pipe the output to another program.
+
+
+		Why And what is cors
+			A JavaScript application running in the browser can usually only access HTTP resources on the same domain (origin) that serves it.
+
+			Loading images or scripts/styles always works, but XHR and Fetch calls to another server will fail, unless that server implements a way to allow that connection.
+
+			This way is called CORS, Cross-Origin Resource Sharing.
+
+			Also loading Web Fonts using @font-face has same-origin policy by default, and other less popular things (like WebGL textures and drawImage resources loaded in the Canvas API).
+
+			One very important thing that needs CORS is ES Modules, recently introduced in modern browsers.
+
+			If you don’t set up a CORS policy on the server that allows to serve 3rd part origins, the request will fail.
+
+
+
+		Why and what body-parser
+			To handle HTTP POST request in Express.js version 4 and above, you need to install middleware module called body-parser.
+
+			body-parser extract the entire body portion of an incoming request stream and exposes it on  req.body.
+
+			The middleware was a part of Express.js earlier but now you have to install it separately.
+
+			This body-parser module parses the JSON, buffer, string and URL encoded data submitted using HTTP POST request. Install body-parser using NPM as shown below.
+
+			npm install body-parser --save
+
+
+	=>	require above all packages check src/app.js
+		express is need to init
+		eg : const app = express();
+
+	=>	use the body-parser morgan cors
+		body-parser for json format easily
+		morgan for logger
+		cors for asset (very easily assing the asset file)
+
+		check in src/app.js
+		const app = express();
+		app.use(cors());
+		app.use(bodyParser.json());
+		app.use(morgan('combine'));
+
+		
+
+		Write Testing for app.listen and app.get 
+
+		app.get('/test',(req,res)=>{
+			return res.send({message : 'Hello TabTracker'});
+		});
+
+		app.listen(process.env.PORT || 8081);
+
+
+
+
+
+
+
